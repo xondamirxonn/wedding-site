@@ -26,7 +26,7 @@
       padding: 30px 40px;
       border: 2px solid #c4a47c;
       border-radius: 12px;
-      max-width: 600px;
+      max-width: 1200px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       position: relative;
     }
@@ -46,55 +46,52 @@
     }
 
     .content {
-      text-align: center;
       margin-top: 20px;
+    }
+
+    .section-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .section-box {
+      flex: 1 1 300px;
+      border: 1px solid #aaa;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .section-box h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .section-box .title {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .section-box .datetime {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    .section-box iframe {
+      margin-top: 10px;
+      width: 100%;
+      height: 200px;
+      border: none;
     }
 
     .names {
       font-family: 'Great Vibes', cursive;
       font-size: 28px;
+      text-align: center;
       margin: 20px 0;
-    }
-
-    .date-time {
-      font-family: 'Quicksand', sans-serif;
-      font-size: 20px;
-      margin: 10px 0;
-      color: #333;
-    }
-
-    .date-time i {
-      margin-right: 6px;
-    }
-
-    .location {
-      font-family: 'Quicksand', sans-serif;
-      font-size: 18px;
-      margin-top: 10px;
-      color: #444;
-    }
-
-    .location i {
-      margin-right: 6px;
-    }
-
-    .map-link {
-      display: inline-block;
-      margin-top: 12px;
-      background: #c4a47c;
-      color: white;
-      padding: 10px 24px;
-      text-decoration: none;
-      border-radius: 30px;
-      font-family: 'Quicksand', sans-serif;
-      font-size: 16px;
-      font-weight: 500;
-      transition: background 0.3s ease, transform 0.2s;
-    }
-
-    .map-link:hover {
-      background: #a9875d;
-      transform: scale(1.05);
     }
 
     .countdown {
@@ -148,30 +145,42 @@
       <strong>(Ar-Rum surasi, 21-oyat)</strong>
     </div>
 
-    <div class="content">
-      <p><strong>Hurmatli mehmon!</strong></p>
-      <p>Sizni hayotimizdagi unutilmas kun – tantanali nikoh to’yimiz munosabati bilan bo’lib o’tadigan “Visol oqshomi”ga taklif etamiz.</p>
-      <div class="names">Muhammadsalih & Sarvinozbegim</div>
 
-      <div class="date-time">
-        <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
-          <div><i class="fa-solid fa-calendar-days"></i>05.07.2025</div>
-          <div><i class="fas fa-clock"></i>18:00</div>
+<p style="text-align: center; font-size: 18px; margin-top: 20px;"><strong>Hurmatli mehmon!</strong><br> Sizni hayotimizdagi unutilmas kun – tantanali nikoh to‘yimiz munosabati bilan bo‘lib o‘tadigan "Visol oqshomi"ga taklif etamiz.</p>
+<div class="names">Muhammadsalih & Sarvinozbegim</div>
+
+
+    <div class="countdown">
+      <div><span id="days">0</span>Kun</div>
+      <div><span id="hours">0</span>Soat</div>
+      <div><span id="minutes">0</span>Minut</div>
+      <div><span id="seconds">0</span>Soniya</div>
+    </div>
+
+<div style="margin: 40px 0; border-top: 2px dashed #c4a47c;"></div>
+
+<div class="content">
+      <div class="section-row">
+        <div class="section-box">
+          <h3>Nahorgi osh</h3>
+          <div class="datetime">
+            <i class="fa-solid fa-calendar-days"></i> 05.07.2025<br>
+            <i class="fa-solid fa-clock"></i> 06:00
+          </div>
+          <br>
+
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2931.192971646178!2d72.446063!3d40.716615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38bb9c5f94c89b4b%3A0x20cbd4c7bcf1227a!2sXumo%20toyxonasi!5e0!3m2!1sen!2s!4v1687700000000!5m2!1sen!2s" allowfullscreen="" loading="lazy"></iframe>
         </div>
-      </div>
+        <div class="section-box">
+          <h3>Ayollar bazmi</h3>
+          <div class="datetime">
+            <i class="fa-solid fa-calendar-days"></i> 05.07.2025<br>
+            <i class="fa-solid fa-clock"></i> 18:00
+          </div>
+          <br>
 
-      <div class="countdown">
-        <div><span id="days">0</span>Kun</div>
-        <div><span id="hours">0</span>Soat</div>
-        <div><span id="minutes">0</span>Minut</div>
-        <div><span id="seconds">0</span>Soniya</div>
-      </div>
-
-      <div class="location">
-        <i class="fas fa-map-marker-alt"></i>“KO'HINUR” restorani<br>
-        <a href="https://www.google.com/maps/place/40%C2%B042'59.8%22N+72%C2%B026'49.8%22E" target="_blank" class="map-link">
-          <i class="fas fa-map"></i> Lokatsiyani ko‘rish
-        </a>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2931.192971646178!2d72.446063!3d40.716615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38bb9c5f94c89b4b%3A0x20cbd4c7bcf1227a!2sXumo%20toyxonasi!5e0!3m2!1sen!2s!4v1687700000000!5m2!1sen!2s" allowfullscreen="" loading="lazy"></iframe>
+        </div>
       </div>
     </div>
   </div>
