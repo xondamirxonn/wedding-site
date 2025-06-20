@@ -5,13 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>To'y Taklifnomasi</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&family=Roboto&family=Quicksand:wght@500&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&family=Roboto&family=Quicksand:wght@500&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" />
+
   <style>
     body {
       font-family: 'Roboto', sans-serif;
@@ -117,6 +114,25 @@
       font-size: 26px;
       font-weight: bold;
     }
+
+    @keyframes flip-up {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      50% {
+        transform: translateY(-10px);
+        opacity: 0.5;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .animate {
+      animation: flip-up 0.5s ease;
+    }
   </style>
 </head>
 
@@ -125,27 +141,22 @@
     <audio id="wedding-music" loop>
       <source src="./audio/wedding_audio.mp3" type="audio/mp3">
     </audio>
+
     <div class="initials">M & S</div>
     <div class="ayah">
-      “Allohning oyatlaridan biri – sizlar uchun juftlar yaratganidir, toki ular bilan sukunat topasizlar va U zot
-      orangizga muhabbat va rahmat soladi...”<br>
+      “Allohning oyatlaridan biri – sizlar uchun juftlar yaratganidir, toki ular bilan sukunat topasizlar va U zot orangizga muhabbat va rahmat soladi...”<br>
       <strong>(Ar-Rum surasi, 21-oyat)</strong>
     </div>
 
     <div class="content">
       <p><strong>Hurmatli mehmon!</strong></p>
-      <p>Sizni hayotimizdagi unutilmas kun – tantanali nikoh to’yimiz munosabati bilan bo’lib o’tadigan “Visol
-        oqshomi”ga taklif etamiz.</p>
+      <p>Sizni hayotimizdagi unutilmas kun – tantanali nikoh to’yimiz munosabati bilan bo’lib o’tadigan “Visol oqshomi”ga taklif etamiz.</p>
       <div class="names">Muhammadsalih & Sarvinozbegim</div>
 
       <div class="date-time">
         <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
-          <div>
-            <i class="fa-solid fa-calendar-days"></i>05.07.2025
-          </div>
-          <div>
-            <i class="fas fa-clock"></i>18:00
-          </div>
+          <div><i class="fa-solid fa-calendar-days"></i>05.07.2025</div>
+          <div><i class="fas fa-clock"></i>18:00</div>
         </div>
       </div>
 
@@ -158,8 +169,7 @@
 
       <div class="location">
         <i class="fas fa-map-marker-alt"></i>“KO'HINUR” restorani<br>
-        <a href="https://www.google.com/maps/place/40%C2%B042'59.8%22N+72%C2%B026'49.8%22E" target="_blank"
-          class="map-link">
+        <a href="https://www.google.com/maps/place/40%C2%B042'59.8%22N+72%C2%B026'49.8%22E" target="_blank" class="map-link">
           <i class="fas fa-map"></i> Lokatsiyani ko‘rish
         </a>
       </div>
@@ -167,26 +177,32 @@
   </div>
 
   <script>
+    const audio = document.getElementById("wedding-music");
     let hasPlayed = false;
 
     function playMusicOnce() {
       if (!hasPlayed) {
-        const audio = document.getElementById("wedding-music");
-        audio.play()
-          .then(() => {
-            hasPlayed = true;
-            console.log("Music started!");
-          })
-          .catch((err) => {
-            console.warn("Still blocked:", err);
-          });
+        audio.play().then(() => {
+          hasPlayed = true;
+        }).catch(err => {
+          console.warn("Autoplay blocked:", err);
+        });
       }
     }
 
-    // Har qanday joyga bosilganda musiqa yoqiladi
     window.addEventListener("click", playMusicOnce);
     window.addEventListener("touchstart", playMusicOnce);
+
     const weddingDate = new Date('2025-07-05T18:00:00');
+
+    function animateChange(id, value) {
+      const el = document.getElementById(id);
+      if (el.textContent !== value.toString()) {
+        el.textContent = value;
+        el.classList.add("animate");
+        setTimeout(() => el.classList.remove("animate"), 500);
+      }
+    }
 
     function updateCountdown() {
       const now = new Date().getTime();
@@ -197,16 +213,14 @@
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      document.getElementById("days").textContent = days;
-      document.getElementById("hours").textContent = hours;
-      document.getElementById("minutes").textContent = minutes;
-      document.getElementById("seconds").textContent = seconds;
+      animateChange("days", days);
+      animateChange("hours", hours);
+      animateChange("minutes", minutes);
+      animateChange("seconds", seconds);
     }
 
     updateCountdown();
     setInterval(updateCountdown, 1000);
-
   </script>
 </body>
-
 </html>
